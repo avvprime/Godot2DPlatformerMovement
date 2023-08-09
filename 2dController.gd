@@ -18,11 +18,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	dir = Vector2.ZERO
 	if Input.is_action_pressed("left"): dir.x = -1
 	elif Input.is_action_pressed("right"): dir.x = 1
+	else: dir.x = 0
 	
 	if Input.is_action_just_pressed("jump"): dir.y = -1
+	else: dir.y = 0
 	on_floor = is_on_floor()
 	
 	velocity.y += gravity
