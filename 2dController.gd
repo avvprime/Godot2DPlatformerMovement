@@ -10,6 +10,7 @@ export var jump_force = 500
 onready var sprite : Sprite = get_node("Sprite")
 
 var velocity : Vector2 = Vector2.ZERO
+var dir : Vector2 = Vector2.ZERO
 var on_floor : bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +18,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	var dir : Vector2 = get_input()
+	dir = Vector2.ZERO
+	if Input.is_action_pressed("left"): dir.x = -1
+	elif Input.is_action_pressed("right"): dir.x = 1
+	
+	if Input.is_action_just_pressed("jump"): dir.y = -1
 	on_floor = is_on_floor()
 	
 	velocity.y += gravity
@@ -37,11 +42,3 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 
-func get_input() -> Vector2:
-	var dir : Vector2 = Vector2.ZERO
-	if Input.is_action_pressed("left"): dir.x = -1
-	elif Input.is_action_pressed("right"): dir.x = 1
-	
-	if Input.is_action_just_pressed("jump"): dir.y = -1
-	
-	return dir
