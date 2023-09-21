@@ -6,3 +6,5 @@ Why it is here?
 Because lets assume that you want to test quickly some assets or maybe an idea and you don't want to rewrite same code again and again. Quickly copy&paste and here you go.
 
 If you want more advanced character controller you need more than this script obviously.
+
+You can remove rotation if you don't want. I added because when you use square it looks more aestethic.
